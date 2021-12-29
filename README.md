@@ -33,7 +33,7 @@ var prettyCron = require('prettycron');
 
 ## Usage
 
-prettyCron exposes three methods, both of which take a cron specification as the only argument.
+prettyCron exposes two methods, both of which take a cron specification as the only argument.
 
 ### prettyCron.toString(cron)
 
@@ -53,14 +53,6 @@ prettyCron.getNext("0 * * * *");
 // if current time is 4:45pm, then returns "Today at 5:00 PM"
 ```
 
-### prettyCron.getNextDates(cron, numDates)
-
-Returns an array of strings representing the next (numDates) amount of times this cron will run, formatted with moment's [calendar()](http://momentjs.com/docs/#/displaying/calendar-time/) method.
-
-```js
-prettyCron.getNextDates("0 * * * *", 4);
-// If current time is 3.45 PM, then returns [ 'Today at 4:00 PM', 'Today at 5:00 PM', 'Today at 6:00 PM', 'Today at 7:00 PM' ]
-```
 
 ## Credits
 

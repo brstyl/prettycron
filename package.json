@@ -1,23 +1,55 @@
 {
-  "name": "prettycron",
-  "version": "0.11.0",
-  "description": "Display cron runspecs in human-readable format",
-  "main": "prettycron.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/azza-bazoo/prettycron.git"
-  },
-  "author": "Hourann Bosci (http://hourann.com)",
-  "license": "LGPL",
-  "readmeFilename": "README.md",
-  "dependencies": {
-    "later": "^1.2.0",
-    "moment": "^2.16.0"
-  },
-  "devDependencies": {
-    "mocha": "^3.1.2"
-  },
-  "scripts": {
-    "test": "node_modules/.bin/mocha test/*.js --ui tdd"
-  }
+    "_from": "prettycron@^0.10.0",
+    "_id": "prettycron@0.10.0",
+    "_inBundle": false,
+    "_integrity": "sha1-EK8N+iC72fZZbX+1u4uFRsrFJ7s=",
+    "_location": "/prettycron",
+    "_phantomChildren": {},
+    "_requested": {
+        "type": "range",
+        "registry": true,
+        "raw": "prettycron@^0.10.0",
+        "name": "prettycron",
+        "escapedName": "prettycron",
+        "rawSpec": "^0.10.0",
+        "saveSpec": null,
+        "fetchSpec": "^0.10.0"
+    },
+    "_requiredBy": [
+        "#USER",
+        "/"
+    ],
+    "_resolved": "https://registry.npmjs.org/prettycron/-/prettycron-0.10.0.tgz",
+    "_shasum": "10af0dfa20bbd9f6596d7fb5bb8b8546cac527bb",
+    "_spec": "prettycron@^0.10.0",
+    "_where": "D:\\projects\\Git\\NX\\CMDB2\\cmdb-frontend",
+    "author": {
+        "name": "Hourann Bosci",
+        "url": "http://hourann.com"
+    },
+    "bugs": {
+        "url": "https://github.com/azza-bazoo/prettycron/issues"
+    },
+    "bundleDependencies": false,
+    "dependencies": {
+        "@breejs/later": "^4.1.0",
+        "moment": "^2.8.4"
+    },
+    "deprecated": false,
+    "description": "Display cron runspecs in human-readable format",
+    "devDependencies": {
+        "mocha": "^2.0.1"
+    },
+    "homepage": "https://github.com/azza-bazoo/prettycron#readme",
+    "license": "LGPL",
+    "main": "prettycron.js",
+    "name": "prettycron",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/azza-bazoo/prettycron.git"
+    },
+    "scripts": {
+        "test": "mocha test/*.js --ui tdd"
+    },
+    "version": "0.10.1"
 }
