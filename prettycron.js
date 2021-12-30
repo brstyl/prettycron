@@ -23,7 +23,7 @@
 
 if ((!moment || !later) && (typeof require !== 'undefined')) {
     var moment = require('moment');
-    var later = require('@breejs/later');
+    var later = require('@breejs/later'); //library switched from later to @breejs/later, which is still maintained - Piotr Dobrowolski on 30.12.2021
 }
 
 (function() {
@@ -37,7 +37,6 @@ if ((!moment || !later) && (typeof require !== 'undefined')) {
         if (numbers.length < 2) {
             return moment()._locale.ordinal(numbers);
         }
-
         var last_val = numbers.pop();
         return numbers.join(', ') + ' and ' + moment()._locale.ordinal(last_val);
     };
@@ -83,6 +82,29 @@ if ((!moment || !later) && (typeof require !== 'undefined')) {
         return (x < 10) ? '0' + x : x;
     };
 
+    /*
+     * Convert week number to the name - added by Piotr Dobrowolski on 30.12.2021
+     */
+    var numberToWeekName = function(weekNumber) {
+        console.log(weekNumber);
+        switch (weekNumber[0]) {
+            case 0:
+                return 'last ';
+            case 1:
+                return 'first ';
+            case 2:
+                return 'second ';
+            case 3:
+                return 'third ';
+            case 4:
+                return 'fourth ';
+            case 5:
+                return 'fifth ';
+            default:
+                console.log(`No such week of month: ${weekNumber}.`);
+        }
+    }
+
     //----------------
 
     /*
@@ -91,7 +113,7 @@ if ((!moment || !later) && (typeof require !== 'undefined')) {
      */
     var scheduleToSentence = function(schedule) {
         var output_text = 'Every ';
-
+        console.log(schedule);
         if (schedule['h'] && schedule['m'] && schedule['h'].length <= 2 && schedule['m'].length <= 2) {
             // If there are only one or two specified values for
             // hour or minute, print them in HH:MM format
@@ -108,7 +130,7 @@ if ((!moment || !later) && (typeof require !== 'undefined')) {
                 var last_val = hm.pop();
                 output_text = hm.join(', ') + ' and ' + last_val;
             }
-            if (!schedule['Y'] && !schedule['D']) {
+            if (!schedule['d'] && !schedule['D']) {
                 output_text += ' every day';
             }
 
@@ -139,14 +161,18 @@ if ((!moment || !later) && (typeof require !== 'undefined')) {
             }
         }
 
-        if (schedule['Y']) { // runs only on specific day(s) of week
+        if (schedule['d']) { // runs only on specific day(s) of week
             if (schedule['D']) {
                 // if both day fields are specified, cron uses both; superuser.com/a/348372
                 output_text += ' and every ';
+            } else if (schedule['dc']) {
+                //if the week of month is defined - added by Piotr Dobrowolski on 30.12.2021
+                output_text += ' on the ';
+                output_text += numberToWeekName(schedule['dc']);
             } else {
                 output_text += ' on ';
             }
-            output_text += dateList(schedule['Y'], 'dow');
+            output_text += dateList(schedule['d'], 'dow');
         }
 
         if (schedule['M']) {
