@@ -86,7 +86,6 @@ if ((!moment || !later) && (typeof require !== 'undefined')) {
      * Convert week number to the name - added by Piotr Dobrowolski on 30.12.2021
      */
     var numberToWeekName = function(weekNumber) {
-        console.log(weekNumber);
         switch (weekNumber[0]) {
             case 0:
                 return 'last ';
@@ -113,7 +112,6 @@ if ((!moment || !later) && (typeof require !== 'undefined')) {
      */
     var scheduleToSentence = function(schedule) {
         var output_text = 'Every ';
-        console.log(schedule);
         if (schedule['h'] && schedule['m'] && schedule['h'].length <= 2 && schedule['m'].length <= 2) {
             // If there are only one or two specified values for
             // hour or minute, print them in HH:MM format
